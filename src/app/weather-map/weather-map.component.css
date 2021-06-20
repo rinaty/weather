@@ -1,0 +1,43 @@
+.page-title{
+    font-weight: bold;
+    font-size: 22px;
+    text-align: center;
+    padding: 24px;
+}
+.weather-list{
+    margin-top: 150px;;
+    width: 100%;
+    max-width: 100%;
+    min-height: 250px;
+    border: 1px solid gray;
+}
+
+.weather-title{
+    background: gray;
+    padding: 10px;
+    margin: 0px;
+    font-weight: bold;
+    font-size: 16px;
+}
+.no-data{
+    font-weight: bold;
+    font-size: 21px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    min-height: inherit;
+}
+.weather-row{
+    padding: 10px;
+    margin: 0px;
+    font-weight: bold;
+    font-size: 14px;
+}
+.weather-row:nth-child(odd) {
+    background: #dbdbdb;
+  }
+
+  ::ng-deep .mat-form-field-type-mat-select .mat-form-field-label, .mat-select-value {
+    color: white;
+  }

@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="row">
+        <span class="page-title">Check Weather</span>
+    </div>
+
+    <div class="weather-form row col-md-12" [formGroup]="form">     
+        <div class="row" formArrayName="weatherMaps">
+            <div  class="row" *ngFor="let weather of getWeatherTemps(); let i=index">
+                <div  class="row" [formGroupName]="i">
+                    <div class="col-md-4">
+                        <mat-form-field appearance="fill">
+                            <mat-select formControlName="city" placeholder="Select City">
+                                <mat-option *ngFor="let city of cities" [value]="city.value">
+                                {{city.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="weather.get('city').touched && weather.get('city').hasError('required')">
+                                This field is required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                             
+                    <div class="col-md-4">
+                        <mat-form-field appearance="fill">
+                            <input matInput placeholder="Unit (Standard,metric)" formControlName="unit">
+                            <mat-error *ngIf="weather.get('unit').touched && weather.get('unit').hasError('required')">
+                                This field is required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+            
+                    <div class="col-md-4">
+                        <button mat-button color="primary" (click)="addItem(i)" aria-label="Example icon button with a delete icon">
+                            <mat-icon aria-hidden="false">add</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+   
+    </div>
+
+    <div class="weather-list">
+        <div class="row weather-title">
+            <span class="col-md-3">Num#</span>
+            <span class="col-md-3">City</span>
+            <span class="col-md-3">Temperature</span>
+            <span class="col-md-3">Unit</span>
+        </div>
+        <div class="no-data" *ngIf="weatherStore?.lst?.length == 0">
+            No Data
+        </div>
+        <div class="row weather-row" *ngFor="let item of weatherStore?.lst;let i = index">
+            <span class="col-md-3">{{i + 1}}</span>
+            <span class="col-md-3">{{cities[item.city]?.viewValue}}</span>
+            <span class="col-md-3">{{item.temp}}</span>
+            <span class="col-md-3">{{item.unit}}</span>
+        </div>
+    </div>
+</div>
